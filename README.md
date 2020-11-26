@@ -8,6 +8,7 @@
 # **Первый запуск проекта**
 1)  В командной строке необходимо выполнить команду:
     `docker pull aristovnikita/test_task_1.0:latest`
+    https://hub.docker.com/repository/docker/aristovnikita/test_task_1.0 - публикация на hub.docker.
 2)  Для запуска проекта необходимо в командной строке выполнить следующую команду:  
 `docker run -d --publish 8000:8000 aristovnikita/test_task_1.0`  
 3)  После необходимо подождать 1 минуту, пока запуститься контейнер, и перейти на localhost http://127.0.0.1:8000/ , либо http://localhost:8000/ . 
