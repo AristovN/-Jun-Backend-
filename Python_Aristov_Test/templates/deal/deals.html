@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <a href="/admin/">
+        <h3>Панель администратора</h3>
+    </a>
+
+    <form method="post" action="" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="form-group">
+            <input type="file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Загрузить csv-файл</button>
+    </form>
+
+    <h3>Обработанные данные:</h3>
+    <h4>Список из 5 клиентов, потративших наибольшую сумму на весь период.</h4>
+</div>
+<div class="container border">
+    <div class="row">
+        <div class="col-4 border" style="text-align: center">
+            Логин
+        </div>
+        <div class="col-4 border" style="text-align: center">
+            Потраченные средства
+        </div>
+        <div class="col-4 border" style="text-align: center">
+            Камни, которые купили как минимум 2 из списка
+        </div>
+    </div>
+        <div class="row">
+            {% for client in top_clients %}
+                <div class="col-4 border" style="text-align: center">
+                    {{ client.username }}
+                </div>
+                <div class="col-4 border" style="text-align: center">
+                    {{ client.spent_money }}
+                </div>
+                <div class="col-4 border-right border-left" style="text-align: center">
+                    {{ client.gems }}
+                </div>
+            {% endfor %}
+        </div>
+</div>
+</body>
+</html>
